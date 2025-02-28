@@ -7,76 +7,75 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="container">
-        <h1 style="color: white">William Hunter</h1>
-        <p>ECE MS Student</p>
-        <p>UCSD</p>
-    </header>
+  <header class="container">
+    <h1 style="color: #013f4a; text-align: center">William Hunter</h1>
+    <p style="text-align: center"><a href="mailto:wshunter@ucsd.edu">wshunter@ucsd.edu</a></p>
+    <p style="text-align: center">Incoming PhD Student at UCSD</p>
+  </header>
+  
+  <nav class="container">
+    <ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+    </ul>
+  </nav>
 
-    <nav class="container">
-        <ul>
-            <li><a href="#research">Research</a></li>
-            <li><a href="#publications">Publications</a></li>
-        </ul>
-    </nav>
+  <div class="container" style="flex-direction:row;">  
+    <!--<img src="personal-photo.jpg" style="flex-grow:1" width="100%">-->
+    <div style="flex-grow:1;margin:15px">
+      <p> I am an incoming PhD student in the ECE department at UCSD studying signal processing. My interests are broadly in wireless localization and ranging, and design of hardware and algorithms to exploit the capacity of the wireless medium for sensing. I am affiliated with UCSD's <a href="https://wcsng.ucsd.edu/">WCSNG</a> lab where I have been doing research since my undergrad.
+      <h2> Important Links </h2>
+      <ul>
+	<li><a href="resume.pdf">[Resume]</a></li>
+	<li><a href="www.linkedin.com/in/william-hunter-a68012346">[LinkedIn]</a></li>
+	<li><a href="https://github.com/wshunter/">[GitHub]</a></li>
+      </ul>
+    </p>
+    </div>
 
+  </div>
     <main class="container">
-      <section id="aboutme">
-        <p>I am an incoming PhD student in the ECE department at UCSD studying signal processing. My interests are broadly in wireless localization and ranging, and design of hardware and algorithms to exploit the capacity of the wireless medium for sensing. I am affiliated with UCSD's <a href="https://wcsng.ucsd.edu/">WCSNG</a> lab where I have been doing research since my undergrad.
-      </section>
-      <div class="right-block">
-        <h2> Important Links </h2>
-        <div class="right-item">
-          <a href="resume.pdf">[Resume]</a>
-        </div>
-        
-            <h2>Right History</h2>
-            <div class="right-item">
-                <div class="right-year">2018-2022</div>
-                <h3>Bachelor's Degree in Computer Science</h3>
-                <p>University Name</p>
-            </div>
 
-            <div class="right-item">
-                <div class="right-year">2016-2018</div>
-                <h3>Associate's Degree</h3>
-                <p>College Name</p>
-            </div>
-
-            <div class="right-item">
-                <div class="right-year">2012-2016</div>
-                <h3>High School Diploma</h3>
-                <p>High School Name</p>
-            </div>
-        </div>
-      <section id="research">
-        <h2>Research Interests</h2>
-        <li>LoRa clock synchronization & ranging</li>
-      </section>
       
+      <section id="research">
+        <h2>Research</h2>
+        <h3>LoRa clock synchronization & ranging</h3>
+	<p>
+	  I collaborate with Meta's Open Compute Project on development of low-cost wireless platforms that can provide accurate (sub-10 nanosecond) clock synchronization over a LoRa link. We accomplish this using high-resolution matched filtering to superresolve packet timestamps using an FPGA. We couple this baseband hardware to a stable voltage-controlled oscillator, which allows us to use control theory techniques to stabilize clock time and frequency offset. <b>In this project, I've covered a wide breadth of the wireless systems field, from simulation of DSP algorithms in Python, to wireless embedded system development in C, to DSP circuit implementation in Verilog.</b> We are currently seeking publication for this work, but please <a href="mailto:wshunter@ucsd.edu">email me</a> if you're interested in learning more or collaborating.
+	</p>
+	<img src="assets/lora_diagram.png" style="width:40%;float:right;" class="figure">
+	<h4>Hardware</h4>
+	<p>We've developed an SDR-like platform that uses an SX1276 LoRa transciever to send and receive LoRa packets over-the-air, while also looping the signal back for a high-bandwidth timing measurement. The SX1257, an integrated RF-frontend + LNA + ADC chip is used to make raw IQ measurements of the transmitted and received packets, which I then process in an ICE40 FPGA. The SX1257 can pick up both received LoRa packets and our own transmitted packets via an RF switch. This is a great architecture for research since it lets us use a full-featured LoRa transciever while also getting the raw signal measurements we need for highly accurate timing and positioning. Control of the system is handled with an STM32 microcontroller.</p>
+	<p>The FPGA's main purpose is to perform matched filtering with the downchirp in the LoRa preamble in order to detect packets. It also talks to the SX1257 to normalize the signal power. The FPGA continuously streams IQ data to a circular buffer in the STM32's RAM, stopping when a packet is detected.</p>
+	<h4>Firmware</h4>
+	<p>The STM32's first job is to accurately timestamp transmitted and received packets based on the IQ stream. The FPGA has already computed a rough timestamp, but we can find the matched filter peak more accurately by upsampling the signal. This is done in several stages along with some tricks to reduce computational complexity.</p>
+	<p>After an accurate time measurement has been made, we adjust the client clock's oscillator using a control loop to accurately align their timestamps. This allows range measurements to within 10-20 feet.</p>
+	<h3>Wi-Fi Localization</h3>
+	<p>During my undergrad I worked on algorithms to help robots navigate indoors using Wi-Fi beacon signals generated by access points. I used an antenna array to compute angle-of-arrival of the beacon packets at the robot and then several SLAM algorithms to reconstruct a map of the environment containing the access point location. These AP direction measurements help accurately reconstruct a map and reduce the computational complexity of navigation.
+	<hr>
+      </section>
+
       <section id="publications">
-        <h2>Selected Publications</h2>
-        <div class="publications">
-          <div class="publication-item">
-            <h3>Lorem Ipsum Dolor</h3>
-            <p>John Doe, Jane Smith; Journal of Examples 2022</p>
-          </div>
-          
-          <div class="publication-item">
-            <h3>Sit Amet Consectetur</h3>
-            <p>John Doe, James Brown; Proceedings of the Example Conference 2021</p>
-          </div>
-          
-          <div class="publication-item">
-            <h3>Adipiscing elit tempor</h3>
-            <p>John Doe; International Journal of Things 2020</p>
-                </div>
-            </div>
-        </section>
-    </main>
+	<h2>Publications</h2>
+
+	<ul>
+	  <li>
+	    Mundra, P., Huang, Z., <strong>Hunter, W.</strong>, Arun, A., Khadela, D., Sinha, P., Bharadia, D., Ayyasomayajula, R. (2024). <em>WiSenseHub: Architecture to deploy a building-scale Wi-Fi Sensing System</em>. ACM Workshop on Wireless Network Testbeds, Experimental evaluation &amp; Characterization (WiNTECH 2024). <a href="assets/wisensehub.pdf">[Paper]</a>
+	  </li>
+	  <li>
+	    Arun, A., <strong>Hunter, W.</strong>, Ayyalasomayajula, R., and Bharadia, D. (2024). <em>WAIS: Leveraging WiFi for Resource-Efficient SLAM</em>. International Conference on Mobile Systems, Applications and Services (MOBISYS '24).<a href="assets/wais.pdf">[Paper]</a>
+	  </li>
+	  <li>
+	    Arun, A., <strong>Hunter, W.</strong>, and Bharadia, D. (2023). <em>Demo Abstract: Accessible WiFi sensing leveraging Robot Operating System</em>. (IPSN '23).<a href="assets/wiros.pdf">[Paper]</a>
+	  </li>
+	  <li>
+	    Arun, A., Ayyalasomayajula, R., <strong>Hunter, W.</strong>, and Bharadia, D. (2022). <em>P2SLAM: Bearing based WiFi SLAM for Indoor Robots</em>. IEEE Robotics and Automation Letters.<a href="assets/p2slam.pdf">[Paper]</a>
+	  </li>
+	</ul>
+      </section>
 
     <footer>
-        <p>&copy; 2024 John Doe. All rights reserved.</p>
+        <p>&copy; 2025 William Hunter. All rights reserved.</p>
     </footer>
 </body>
 </html>

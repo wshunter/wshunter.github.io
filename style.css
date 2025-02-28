@@ -1,103 +1,97 @@
-
-/* General styles */
-
-:root {
-    --primary-color: #2c3e50;
-    --background-color: #f5f5f5;
-    --text-color: #333333;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Open Sans', sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--background-color);
-}
-
-.container {
-    max-width: 1200px;
+    font-family: Arial, sans-serif;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 20px;
+    background-color: #f7deb0;
+    line-height: 1.6;
 }
 
-header {
-    background-color: var(--primary-color);
-    color: white;
-    text-align: left;
-    padding: 2rem 0;
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size:100px;
 }
 
-nav {
-    background-color: #ffffff;
-    padding: 1rem 0;
-    border-bottom: 1px solid #dddddd;
+.header h1 {
+    color: #008a85;
+    margin-bottom: 5px;
+    font-size:100px;
+}
+
+.header h2 {
+    color: #666;
+    margin-top: 0;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: right;
+    justify-content: center;
     gap: 2rem;
+    border-bottom: 4px solid #000;
+    border-top: 4px solid #000;
 }
 
-nav a {
-    color: var(--primary-color);
+
+.navigation {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.navigation a {
+    color: #8B0000;
     text-decoration: none;
-    font-weight: 600;
+    margin: 0 15px;
+    font-weight: bold;
 }
 
-nav a:hover {
+.navigation a:hover {
     text-decoration: underline;
 }
 
-section {
-    padding: 4rem 0 2rem;
-    border-bottom: 1px solid #dddddd;
+.content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-h1, h2, h3 {
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
+.year-section {
+    margin-bottom: 30px;
 }
+
+.year-section h3 {
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.news-item {
+    margin-bottom: 15px;
+}
+
 
 .right-block {
     float: right;
     width: 30%;
-    background-color: #f5f5f5;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-.right-item {
-    margin-bottom: 15px;
-}
-.right-year {
-    font-weight: bold;
-    color: #666;
+    border-left: 3px solid #000;
+    /* background-color: #f7deb0; */
+    padding: 16px;
+    margin: 16px;
 }
 
-.publications {
-    display: grid;
-    gap: 1rem;
+
+a {
+    color: #8B0000;
 }
 
-.publication-item {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.figure {
+    padding:16px;
+    margin:16px;
 }
 
-footer {
-    text-align: center;
-    padding: 2rem 0;
+.container {
+    display: flex;
+    flex-direction: column;
 }
-
-        
