@@ -10,7 +10,7 @@
   <header class="container">
     <h1 style="color: #013f4a; text-align: center">William Hunter</h1>
     <p style="text-align: center"><a href="mailto:wshunter@ucsd.edu">wshunter@ucsd.edu</a></p>
-    <p style="text-align: center">Incoming PhD Student at UCSD</p>
+    <p style="text-align: center">ECE PhD Student at UCSD</p>
   </header>
   
   <nav class="container">
@@ -21,10 +21,10 @@
   </nav>
 
   <div class="container" style="flex-direction:row;">  
-    <!--<img src="personal-photo.jpg" style="flex-grow:1" width="100%">-->
+    <img src="assets/portrait.jpg" style="flex-grow:1" width="100%">
     <div style="flex-grow:1;margin:15px">
-      <p> I am an incoming PhD student in the ECE department at UCSD studying signal processing. My interests are broadly in wireless localization and ranging, and design of hardware and algorithms to exploit the capacity of the wireless medium for sensing. I am affiliated with UCSD's <a href="https://wcsng.ucsd.edu/">WCSNG</a> lab where I have been doing research since my undergrad.
-      <h2> Important Links </h2>
+      <p> I am an incoming PhD student in the ECE department at UCSD studying signal processing. I work promarily on wireless localization and sensing, I also interested in embedded systems and IoT. I work in the <a href="https://wcsng.ucsd.edu/">WCSNG</a> lab where I have been doing research since my undergrad.
+      <h2> External Links </h2>
       <ul>
 	<li><a href="resume.pdf">[Resume]</a></li>
 	<li><a href="https://linkedin.com/in/william-hunter-a68012346">[LinkedIn]</a></li>
@@ -39,17 +39,13 @@
       
       <section id="research">
         <h2>Research</h2>
-        <h3>LoRa clock synchronization & ranging</h3>
-	<p>
-	  I collaborate with Meta's Open Compute Project on development of low-cost wireless platforms that can provide accurate (sub-10 nanosecond) clock synchronization over a LoRa link. We accomplish this using high-resolution matched filtering to superresolve packet timestamps using an FPGA. We couple this baseband hardware to a stable voltage-controlled oscillator, which allows us to use control theory techniques to stabilize clock time and frequency offset. <b>In this project, I've covered a wide breadth of the wireless systems field, from simulation of DSP algorithms in Python, to wireless embedded system development in C, to DSP circuit implementation in Verilog.</b> We are currently seeking publication for this work, but please <a href="mailto:wshunter@ucsd.edu">email me</a> if you're interested in learning more or collaborating.
-	</p>
-	<img src="assets/lora_diagram.png" style="width:40%;float:right;" class="figure">
-	<h4>Hardware</h4>
-	<p>We've developed an SDR-like platform that uses an SX1276 LoRa transciever to send and receive LoRa packets over-the-air, while also looping the signal back for a high-bandwidth timing measurement. The SX1257, an integrated RF-frontend + LNA + ADC chip is used to make raw IQ measurements of the transmitted and received packets, which I then process in an ICE40 FPGA. The SX1257 can pick up both received LoRa packets and our own transmitted packets via an RF switch. This is a great architecture for research since it lets us use a full-featured LoRa transciever while also getting the raw signal measurements we need for highly accurate timing and positioning. Control of the system is handled with an STM32 microcontroller.</p>
-	<p>The FPGA's main purpose is to perform matched filtering with the downchirp in the LoRa preamble in order to detect packets. It also talks to the SX1257 to normalize the signal power. The FPGA continuously streams IQ data to a circular buffer in the STM32's RAM, stopping when a packet is detected.</p>
-	<h4>Firmware</h4>
-	<p>The STM32's first job is to accurately timestamp transmitted and received packets based on the IQ stream. The FPGA has already computed a rough timestamp, but we can find the matched filter peak more accurately by upsampling the signal. This is done in several stages along with some tricks to reduce computational complexity.</p>
-	<p>After an accurate time measurement has been made, we adjust the client clock's oscillator using a control loop to accurately align their timestamps. This allows range measurements to within 10-20 feet.</p>
+	<h3>Wi-PRO: Accurate Indoor PNT using FTM with
+Multipath Suppression</h3>
+	802.11mc (FTM Ranging) has been standardized in Wi-Fi for a few years now, but we see very few commercial products using it. This is because most open FTM implementations have extremely poor empirical performance indoors, due to multipath. In this work, I show that you can use CIR measurements exposed by the ESP32 with a simple leading-edge detection algorithm to cancel the effect of multipath, and obtain a 3-4x improvement in range error over the ESP32's implementation. I have also released a toolbox <a href="https://github.com/ucsdwcsng/wi-pro-esp32-ftm">[Code]</a> along with the paper <a href="assets/wi-pro.pdf">[Paper]</a> so others can experiment with wireless localization systems on the ESP32.
+	
+	<h3>Wireless Synchronization</h3>
+	In collaboration with Meta's Time Appliance Project (subsidiary of the Open Compute Project,) I developed a wireless synchronization platform that uses LoRa packets to accurately time- and frequency- lock two boards. For this project, we implemented a VCO+Clock Servo on an FPGA and then developed an interesting SDR-like architecture using the SX1256 radio fronend, and implement our own LoRa baseband receiver inside tge FPGA in order to get I/Q samples timestamped with respect to the syncrhonized clock. This lets us obtain instantaneous clock phase offsets constrained to within 10-20 nanoseconds. Work is currently seeking publication.
+	
 	<h3>Wi-Fi Localization</h3>
 	<p>During my undergrad I worked on algorithms to help robots navigate indoors using Wi-Fi beacon signals generated by access points. I used an antenna array to compute angle-of-arrival of the beacon packets at the robot and then several SLAM algorithms to reconstruct a map of the environment containing the access point location. These AP direction measurements help accurately reconstruct a map and reduce the computational complexity of navigation.
 	<hr>
