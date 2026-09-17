@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300" role="img" aria-label="Placeholder image for wifi-localization">
+  <rect width="400" height="300" fill="#013f4a"/>
+  <rect x="8" y="8" width="384" height="284" fill="none" stroke="#f7deb0" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="200" y="140" fill="#f7deb0" font-family="Arial, sans-serif" font-size="26" font-weight="bold" text-anchor="middle">WIFI LOCALIZATION</text>
+  <text x="200" y="175" fill="#f7deb0" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" opacity="0.8">placeholder image</text>
+</svg>

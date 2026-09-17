@@ -1,0 +1,23 @@
+title: William Hunter
+role: ECE PhD Student at UCSD
+email: wshunter@ucsd.edu
+
+links:
+  - { label: Resume, url: resume.pdf }
+  - { label: LinkedIn, url: "https://linkedin.com/in/william-hunter-a68012346" }
+  - { label: GitHub, url: "https://github.com/wshunter/" }
+
+collections:
+  publications:
+    output: false
+
+exclude:
+  - vendor/
+  - .bundle/
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - assets/thumbs/make_thumbs.sh
+  - assets/thumbs/*.pdf
+  - assets/thumbs/*.svg
+  - assets/portrait-uncropped.jpg

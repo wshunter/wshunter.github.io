@@ -1,97 +1,179 @@
+:root {
+    --bg: #fbf5e9;
+    --text: #222;
+    --muted: #5f5a50;
+    --accent: #013f4a;
+    --link: #8b0000;
+    --rule: #e3d6bd;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    max-width: 1000px;
     margin: 0 auto;
-    padding: 20px;
-    background-color: #f7deb0;
+    max-width: 760px;
+    padding: 2rem 1rem;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1rem;
     line-height: 1.6;
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size:100px;
-}
-
-.header h1 {
-    color: #008a85;
-    margin-bottom: 5px;
-    font-size:100px;
-}
-
-.header h2 {
-    color: #666;
-    margin-top: 0;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    border-bottom: 4px solid #000;
-    border-top: 4px solid #000;
-}
-
-
-.navigation {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.navigation a {
-    color: #8B0000;
+a {
+    color: var(--link);
     text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
 }
 
-.navigation a:hover {
+a:hover {
     text-decoration: underline;
 }
 
-.content {
-    background-color: white;
-    padding: 30px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+h1, h2, h3 {
+    color: var(--accent);
+    line-height: 1.25;
 }
 
-.year-section {
-    margin-bottom: 30px;
+img {
+    max-width: 100%;
 }
 
-.year-section h3 {
-    color: #333;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 5px;
+/* Header */
+.site-header {
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
-.news-item {
-    margin-bottom: 15px;
+.site-header h1 {
+    margin: 0;
+    font-size: 2.25rem;
 }
 
-
-.right-block {
-    float: right;
-    width: 30%;
-    border-left: 3px solid #000;
-    /* background-color: #f7deb0; */
-    padding: 16px;
-    margin: 16px;
+.role {
+    margin: 0.25rem 0 0.75rem;
+    color: var(--muted);
 }
 
-
-a {
-    color: #8B0000;
-}
-
-.figure {
-    padding:16px;
-    margin:16px;
-}
-
-.container {
+.links {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem 1.25rem;
+}
+
+/* About */
+.about {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--rule);
+}
+
+.portrait {
+    flex: 0 0 160px;
+    width: 160px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.about p {
+    margin: 0;
+}
+
+/* Publications */
+h2 {
+    font-size: 1.4rem;
+    margin: 2rem 0 0.5rem;
+}
+
+.pub-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pub {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--rule);
+}
+
+.pub:last-child {
+    border-bottom: none;
+}
+
+.pub-thumb {
+    flex: 0 0 180px;
+    width: 180px;
+    height: auto;
+    padding: 6px;
+    background: #fff;
+    border-radius: 6px;
+    object-fit: contain;
+}
+
+.pub-text {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.pub-text h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.05rem;
+}
+
+.pub-text p {
+    margin: 0 0 0.5rem;
+}
+
+.citation {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.pub-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    font-size: 0.9rem;
+}
+
+.pub-links a::before { content: "["; }
+.pub-links a::after { content: "]"; }
+
+footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+@media (max-width: 600px) {
+    .site-header h1 {
+        font-size: 1.8rem;
+    }
+    .about {
+        flex-direction: column;
+        text-align: left;
+    }
+    .portrait {
+        flex-basis: auto;
+        width: 120px;
+    }
+    .pub {
+        flex-direction: column;
+    }
+    .pub-thumb {
+        flex-basis: auto;
+        width: 100%;
+        max-width: 360px;
+        align-self: center;
+    }
 }
