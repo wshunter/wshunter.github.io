@@ -1,10 +1,10 @@
 {%- assign pub = include.pub -%}
 <li class="pub">
-  {%- if pub.thumb %}
-  <img class="pub-thumb" src="{{ pub.thumb | relative_url }}" alt="{{ pub.thumb_alt | escape }}" loading="lazy">
-  {%- endif %}
-  <div class="pub-text">
-    <h3>{{ pub.title | escape }}</h3>
+  <h3>{{ pub.title | escape }}</h3>
+  <div class="pub-body">
+    {%- if pub.thumb %}
+    <img class="pub-thumb" src="{{ pub.thumb | relative_url }}" alt="{{ pub.thumb_alt | escape }}" loading="lazy">
+    {%- endif %}
     {%- assign body = pub.content | strip -%}
     {%- if body != "" %}
     {{ body }}

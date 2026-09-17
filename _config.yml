@@ -12,6 +12,7 @@ collections:
     output: false
 
 exclude:
+  - references/
   - vendor/
   - .bundle/
   - README.md
